@@ -19,17 +19,12 @@ public class Run {
     float tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
 
     System.out.println("La distance cosinus entre les deux documents est de : " +
-        docDist.docDistance(l_avare, fableFontaine) + " radians\n");
+        docDist.docDistance(fableFontaine, l_avare) + " radians\n");
 
     System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
 
-    // System.out.println("Nombre de mot distinct A : " + docDist.nombreMotA +
-    //  "\n");
-
-    // for (String s : test.keySet()) {
-    // //System.out.println(s + " " + test.get(s).getA() + " " +
-    // test.get(s).getB());
-    // }
+    System.out.println("Nombre de mot distinct A : " + docDist.nombreMotA +
+     "\n");
   }
 
   // Map<String, Couple> test = getFreqMotTest("(String) \"pour\" pour [tester]

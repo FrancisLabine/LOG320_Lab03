@@ -1,10 +1,6 @@
 package laboratoire3;
 
 import java.io.FileInputStream;
-import java.net.URL;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -25,25 +21,26 @@ public class DocDist {
     }
 
     public double trouverAngle(Map<String, Couple> pMap) {
-        int produiScalaire = 0;
+        int produitScalaire = 0;
         double normeA = 0;
         double normeB = 0;
         //calculer le produit scalaire + les norme A et B (avant la racine)
         for (String key : pMap.keySet()) {
+            System.out.println(key + " "+ pMap.get(key).getA() + " " + pMap.get(key).getB());
             Couple c = pMap.get(key);
-            produiScalaire += c.getProduit();
+            produitScalaire += c.getProduit();
             normeA += Math.pow(c.getA(), 2);
             normeB += Math.pow(c.getB(), 2);
         }
         //racine des normes trouvés
         normeA = Math.sqrt(normeA);
         normeB = Math.sqrt(normeB);
-        return Math.acos(produiScalaire / (normeA * normeB));
+        return Math.acos(produitScalaire/(normeA * normeB) );
     }
 
     public Map<String, Couple> getFreqMot(String nomFichierA, String nomFichierB) {
-        String split = "[-_' .,\r\n]";
-        String regx = "[(){}\"\r\n!?&*:%$#@;,\\«\\»\\<\\>\\[\\]]";
+        String split = "[\\-\\_\\'\\ \\.\\;\\\\/:\\,\t\r\n]";
+        String regx = "[(){}\\ \"\t\r\n!\\?\\&\\*\\:\\%\\$\\#\\;\\,\\`\\«\\»\\<\\>\\[\\]]";
         Map<String, Integer> tabFreqA = new HashMap<>();
         Map<String, Couple> tabFreqA_B = new HashMap<>();
 
@@ -54,12 +51,14 @@ public class DocDist {
             while (sc.hasNextLine()) {
                 for (String mot : sc.nextLine().split(split)) {
                     String curMot = mot.replaceAll(regx, "").toLowerCase();
-                    if (tabFreqA.containsKey(curMot)) {
-                        tabFreqA.put(curMot, tabFreqA.get(curMot) + 1);
-                    } else {
-                        tabFreqA.get(curMot);
-                        tabFreqA.put(curMot, 1);
-                        nombreMotA += 1;
+                    if(curMot.length() > 0){
+                        if (tabFreqA.containsKey(curMot)) {
+                            tabFreqA.put(curMot, tabFreqA.get(curMot) + 1);
+                        } else {
+                            tabFreqA.get(curMot);
+                            tabFreqA.put(curMot, 1);
+                            nombreMotA += 1;
+                        }
                     }
                 }
             }
