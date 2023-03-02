@@ -19,32 +19,42 @@ static String tresGros = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320
     float tempsLineaire;
     double radian;
 
-    start = System.nanoTime();
-    docDist.docDistance(tresGros, fableFontaine);
-    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
-    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
-
-    // // test 1
-    // System.out.println("Tres_gros et fable fontaine");
+    // LONG TESTS
     // start = System.nanoTime();
-    // radian = docDist.docDistance(tresGros, fableFontaine);
+    // docDist.docDistance(tresGros, fableFontaine);
     // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
-    // System.out.println("Distance : " + String.format("%.3g", radian));
-    // System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
+    // System.out.println("Temps d'execution : " + tempsLineaire + " ms");
+    // start = System.nanoTime();
+    // docDist.docDistance(tresGros, fableFontaine);
+    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    // System.out.println("Temps d'execution : " + tempsLineaire + " ms");
+    // start = System.nanoTime();
+    // docDist.docDistance(tresGros, fableFontaine);
+    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    // System.out.println("Temps d'execution : " + tempsLineaire + " ms");
 
-    // // test 2
-    // System.out.println("monte cristo 2 et fable fontaine");
-    // radian = docDist.docDistance(monteCristo2, fableFontaine);
-    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
-    // System.out.println("Distance : " + String.format("%.3g", radian));
-    // System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
+    //TESTS REGULIERS
+    // test 1
+    System.out.println("l_avare et fable fontaine");
+    start = System.nanoTime();
+    radian = docDist.docDistance(l_avare, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Distance : " + String.format("%.3g", radian));
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
 
-    // // test 3
-    // System.out.println("mysterious affair et monte cristo 1");
-    // radian = docDist.docDistance(monteCristo2, mysteriousAffair);
-    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
-    // System.out.println("Distance : " + String.format("%.3g", radian));
-    // System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
+    // test 2
+    System.out.println("monte cristo 2 et fable fontaine");
+    radian = docDist.docDistance(monteCristo2, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Distance : " + String.format("%.3g", radian));
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
+
+    // test 3
+    System.out.println("mysterious affair et monte cristo 1");
+    radian = docDist.docDistance(monteCristo2, mysteriousAffair);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Distance : " + String.format("%.3g", radian));
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
 
   }
 

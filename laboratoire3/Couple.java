@@ -33,4 +33,12 @@ public class Couple {
   public int getProduit(){
       return a*b;
   }
+
+  public void incrementeA(){
+    b = b +1;
+  }
+
+  public void incrementeB(){
+    b = b +1;
+  }
 }
