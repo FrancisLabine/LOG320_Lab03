@@ -65,7 +65,6 @@ public class DocDist {
                             if (tabFreqA.containsKey(curMot)) {
                                 tabFreqA.merge(curMot, 1, Integer::sum);
                             } else {
-                                tabFreqA.get(curMot);
                                 tabFreqA.put(curMot, 1);
                             }
                         }

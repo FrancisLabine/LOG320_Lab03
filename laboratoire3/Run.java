@@ -19,7 +19,7 @@ static String tresGros = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320
     float tempsLineaire;
     double radian;
 
-    // LONG TESTS
+    // //LONG TESTS
     // start = System.nanoTime();
     // docDist.docDistance(tresGros, fableFontaine);
     // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
