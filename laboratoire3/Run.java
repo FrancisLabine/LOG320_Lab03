@@ -10,60 +10,102 @@ public class Run {
   static String monteCristo2 = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320_Lab03\\laboratoire3\\Test\\monte_cristo_2-Dumas.txt";
   static String fableFontaine = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320_Lab03\\laboratoire3\\Test\\fables_Lafontaine.txt";
   static String l_avare = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320_Lab03\\laboratoire3\\Test\\l_avare-Moliere.txt";
+  static String adventureSherlock = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320_Lab03\\laboratoire3\\Test\\adventures_of_Sherlock_Holmes-Doyle.txt";
+static String tresGros = "C:\\Users\\PC\\workspace\\LOG320\\LOG320_Lab02\\LOG320_Lab03\\laboratoire3\\Test\\Tres_gros.txt";
 
   public static void main(String args[]) {
-    long start = System.nanoTime();
-
     DocDist docDist = new DocDist();
+    long start;
+    float tempsLineaire;
+    double radian;
 
-    float tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    start = System.nanoTime();
+    docDist.docDistance(tresGros, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
 
-    System.out.println("La distance cosinus entre les deux documents est de : " +
-        docDist.docDistance(fableFontaine, l_avare) + " radians\n");
+    // // test 1
+    // System.out.println("Tres_gros et fable fontaine");
+    // start = System.nanoTime();
+    // radian = docDist.docDistance(tresGros, fableFontaine);
+    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    // System.out.println("Distance : " + String.format("%.3g", radian));
+    // System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
 
-    System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
+    // // test 2
+    // System.out.println("monte cristo 2 et fable fontaine");
+    // radian = docDist.docDistance(monteCristo2, fableFontaine);
+    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    // System.out.println("Distance : " + String.format("%.3g", radian));
+    // System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
 
-    System.out.println("Nombre de mot distinct A : " + docDist.nombreMotA +
-     "\n");
+    // // test 3
+    // System.out.println("mysterious affair et monte cristo 1");
+    // radian = docDist.docDistance(monteCristo2, mysteriousAffair);
+    // tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    // System.out.println("Distance : " + String.format("%.3g", radian));
+    // System.out.println("Temps d'execution : " + tempsLineaire + " ms\n");
+
   }
 
-  // Map<String, Couple> test = getFreqMotTest("(String) \"pour\" pour [tester]
-  // aujourd'hui", "String pour");
-  public static Map<String, Couple> getFreqMotTest(String contenu1, String contenu2) {
-    Map<String, Integer> tabFreq = new HashMap<>();
-    Map<String, Couple> tabFreq2 = new HashMap<>();
-    try {
+  private static void Test2(){
+    DocDist docDist = new DocDist();
+    long start;
+    float tempsLineaire;
 
-      for (String mot : contenu1.split("[' ]")) {
-        String curMot = mot.replaceAll("[(){}\"!?&*\\[\\]]", "");
-        if (tabFreq.containsKey(curMot)) {
-          tabFreq.put(curMot, tabFreq.get(curMot) + 1);
-        } else {
-          tabFreq.get(curMot);
-          tabFreq.put(curMot, 1);
-        }
-      }
+    //1
+    start = System.nanoTime();
+    docDist.docDistance(l_avare, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
 
-      for (String mot : contenu2.split("[' ]")) {
-        String curMot = mot.replaceAll("[(){}\"!;?&*\\[\\]]", "");
-        if (tabFreq.containsKey(curMot)) {
-          if (tabFreq2.containsKey(curMot)) {
-            Couple temp = tabFreq2.get(curMot);
-            temp.setB(temp.getB() + 1);
-            tabFreq2.put(curMot, temp);
-          } else {
-            Couple temp = new Couple(tabFreq.get(curMot), 1);
-            tabFreq2.get(curMot);
-            tabFreq2.put(curMot, temp);
-          }
-        }
-      }
+    //2
+    start = System.nanoTime();
+    docDist.docDistance(monteCristo2, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
 
-    } catch (Exception e) {
-      // TODO: handle exception
-    }
+    //3
+    start = System.nanoTime();
+    docDist.docDistance(mysteriousAffair, monteCristo1);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
 
-    return tabFreq2;
+    //4
+    start = System.nanoTime();
+    docDist.docDistance(adventureSherlock, monteCristo2);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
+  }
+
+  private static void test1(){
+    test test = new test();
+    long start;
+    float tempsLineaire;
+
+    //1
+    start = System.nanoTime();
+    test.docDistance(l_avare, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
+
+    //2
+    start = System.nanoTime();
+    test.docDistance(monteCristo2, fableFontaine);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
+
+    //3
+    start = System.nanoTime();
+    test.docDistance(mysteriousAffair, monteCristo1);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
+
+    //4
+    start = System.nanoTime();
+    test.docDistance(adventureSherlock, monteCristo2);
+    tempsLineaire = (float) (System.nanoTime() - start) / 1000000;
+    System.out.println("Temps d'execution : " + tempsLineaire + " ms");
   }
 
 }

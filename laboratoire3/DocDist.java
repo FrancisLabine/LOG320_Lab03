@@ -2,31 +2,24 @@ package laboratoire3;
 
 import java.io.FileInputStream;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class DocDist {
-    // --pour test seulement, a retirer--
-    int nombreMotA = 0;
-    int nombreMotB = 0;
-    // ----------------------------------
-
     // Ne pas changer cette fonction, elle sera utilisée pour tester votre programme
     public double docDistance(String nomFichier1, String nomFichier2) {
-        Map<String, Couple> maMap = getFreqMot(nomFichier1, nomFichier2);
+        HashMap<String, Couple> maMap = getFreqMot(nomFichier1, nomFichier2);
         if (maMap != null) {
             return trouverAngle(maMap);
         }
         return -1;
     }
 
-    public double trouverAngle(Map<String, Couple> pMap) {
+    public double trouverAngle(HashMap<String, Couple> pMap) {
         int produitScalaire = 0;
         double normeA = 0;
         double normeB = 0;
         //calculer le produit scalaire + les norme A et B (avant la racine)
         for (String key : pMap.keySet()) {
-            System.out.println(key + " "+ pMap.get(key).getA() + " " + pMap.get(key).getB());
             Couple c = pMap.get(key);
             produitScalaire += c.getProduit();
             normeA += Math.pow(c.getA(), 2);
@@ -38,11 +31,11 @@ public class DocDist {
         return Math.acos(produitScalaire/(normeA * normeB) );
     }
 
-    public Map<String, Couple> getFreqMot(String nomFichierA, String nomFichierB) {
+    public HashMap<String, Couple> getFreqMot(String nomFichierA, String nomFichierB) {
         String split = "[\\-\\_\\'\\ \\.\\;\\\\/:\\,\t\r\n]";
         String regx = "[(){}\\ \"\t\r\n!\\?\\&\\*\\:\\%\\$\\#\\;\\,\\`\\«\\»\\<\\>\\[\\]]";
-        Map<String, Integer> tabFreqA = new HashMap<>();
-        Map<String, Couple> tabFreqA_B = new HashMap<>();
+        HashMap<String, Integer> tabFreqA = new HashMap<>();
+        HashMap<String, Couple> tabFreqA_B = new HashMap<>();
 
         try {
             //Table de frequence des mots pour le fichier A
@@ -57,7 +50,6 @@ public class DocDist {
                         } else {
                             tabFreqA.get(curMot);
                             tabFreqA.put(curMot, 1);
-                            nombreMotA += 1;
                         }
                     }
                 }
@@ -82,7 +74,6 @@ public class DocDist {
                             Couple temp = new Couple(tabFreqA.get(curMot), 1);
                             tabFreqA_B.get(curMot);
                             tabFreqA_B.put(curMot, temp);
-                            // nombreMotB +=1;
                         }
                     }
                 }
